@@ -114,6 +114,8 @@ class SentryLaravelServiceProvider extends ServiceProvider
                         if ($app['auth']->check()) {
                             $client->user_context(array(
                                 'id' => $app['auth']->user()->getAuthIdentifier(),
+                                'name' => $app['auth']->user()->first_name . " " . $app['auth']->user()->last_name,
+                                'email' => $app['auth']->user()->email,
                             ));
                         }
                     } catch (\Exception $e) {
